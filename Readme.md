@@ -1,7 +1,7 @@
 # Личный проект «Пинк» 
 
 * Студент: [Жанна Халбекова](https://up.htmlacademy.ru/adaptive/25/user/1774289).
-* Наставник: [Андрей Ефимов] (https://up.htmlacademy.ru/profession/frontender/13/htmlcss/user/367335).
+* Наставник: [Андрей Ефимов](https://up.htmlacademy.ru/profession/frontender/13/htmlcss/user/367335).
 
 ---
 
