@@ -1,0 +1,11 @@
+<ul class="togglers {{ mix }}">
+  {% for toggler in togglers.list %}
+    <li class="togglers__item">
+      <button class="togglers__controls" type="button" data-toggle="{{ togglers.id}}-{{ loop.index }}">
+        <span class="visually-hidden">
+          {{ togglers.title }}{{ loop.index }}
+        </span>
+      </button>
+    </li>
+  {% endfor %}
+</ul>
