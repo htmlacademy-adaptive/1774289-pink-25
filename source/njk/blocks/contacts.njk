@@ -2,8 +2,12 @@
   <p class="contacts__heading">{{ data.contacts.heading }}</p>
 
   <dl class="contacts__list">
-    <dt class="contacts__item">Звоните:</dt>
-    <dd class="contacts__description">
+    {% for link in data.contacts.list %}
+       <dt class="contacts__item">{{ item.title }}</dt>
+       <dd class="contacts__description">{{ item.description }}</dd>
+     {% endfor %}
+    <dt class="__item">Звоните:</dt>
+    <dd class="__description">
       <a class="contacts__link" href="tel:+78125556666">+7 (812) 555-66-66</a>
     </dd>
     <dt class="contacts__item">Пишите:</dt>
@@ -12,7 +16,7 @@
     </dd>
     <dt class="contacts__item">Приезжайте в гости:</dt>
     <dd class="contacts__description">
-      <a class="contacts__link" href="tel:+78125556666">ул. Большая Конюшенная, 19/8</a>
+      <a class="contacts__link" href="#!">ул. Большая Конюшенная, 19/8</a>
     </dd>
   </dl>
 </footer>
