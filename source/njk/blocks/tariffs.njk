@@ -14,10 +14,10 @@
   <table class="tariffs__table">
     <thead class="tariffs__header">
       <tr class="tariffs__names">
-        <th class="visually-hidden">Параметры.</th>
+        <th class="visually-hidden" scope="col">Параметры.</th>
 
         {% for tariff in data.tariffs %}
-          <th class="tariffs__name">
+          <th class="tariffs__name" scope="col">
             {{ tariff.title }}
             <p class="tariffs__price">{{ tariff.price }} USD</p>
           </th>
@@ -27,7 +27,7 @@
 
     <tbody class="tariffs__props">
       <tr class="tariffs__details">
-        <th class="tariffs__detail">Розовый фильтр</th>
+        <th class="tariffs__detail" scope="row">Розовый фильтр</th>
 
         {% for tariff in data.tariffs %}
           {{ value(tariff.filter) }}
@@ -35,7 +35,7 @@
       </tr>
 
       <tr class="tariffs__details">
-        <th class="tariffs__detail">Смайлики</th>
+        <th class="tariffs__detail" scope="row">Смайлики</th>
 
         {% for tariff in data.tariffs %}
           {{ value(tariff.smiles) }}
@@ -43,12 +43,20 @@
       </tr>
 
       <tr class="tariffs__details">
-        <th class="tariffs__detail">Комментарии</th>
+        <th class="tariffs__detail" scope="row">Комментарии</th>
 
-        {% for tariff in data.tariffs %}
+        {% for tariff in data.tariffs.list %}
           {{ value(tariff.comments) }}
         {% endfor %}
       </tr>
     </tbody>
   </table>
+
+  {% set togglers = {
+    mix: 'tariffs__togglers',
+    id: 'tariffs',
+    title: 'Тариф',
+    length: data.tariffs | length
+  } %}
+  {% include 'blocks/togglers.njk' %}
 </section>

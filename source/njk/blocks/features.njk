@@ -1,0 +1,14 @@
+<section class="features {{ mix }}">
+  <h2 class="visually-hidden">{{ data.features.heading }}.</h2>
+
+  <b class="features__leads">{{ data.features.leads }}</b>
+
+  <ul class="features__list">
+    {% for photo in data.features.list %}
+    <li class="features__item">
+      <h3 class="features__title">{{ features.title }}</h3>
+      <p class="features__description">{{ features.description }}</p>
+    </li>
+    {% endfor %}
+  </ul>
+</section>
