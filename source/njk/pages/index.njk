@@ -1,5 +1,6 @@
 {% extends 'layout.njk' %}
 
+<<<<<<< HEAD
 {% block main%}
 <header class="promo page-main__promo">
   <h1 class="visually-hidden">Pink.</h1>
@@ -91,4 +92,43 @@
   </dl>
 </footer>
 
+=======
+{% macro sliderSlot(block) %}
+  {% set mix = 'slider__list' %}
+  {% include 'blocks/' + block + '.njk' %}
+{% endmacro %}
+
+{% block main %}
+  {% set mix = 'page-main__promo' %}
+  {% include 'blocks/promo.njk' %}
+
+  {% set mix = 'page-main__features' %}
+  {% include 'blocks/features.njk' %}
+
+  {% set slider = {
+    mix: 'page-main__reviews',
+    heading: data.reviews.heading,
+    slot: sliderSlot('reviews'),
+    togglers: {
+      title: 'Отзыв',
+      length: data.reviews.list | length
+    }
+  } %}
+  {% include 'blocks/slider.njk' %}
+
+  {% set slider = {
+    mix: 'page-main__tariffs',
+    heading: data.tariffs.heading,
+    slot: sliderSlot('tariffs'),
+    togglers: {
+      title: 'Тариф',
+      length: data.tariffs.list | length
+    },
+    mobileOnly: true
+  } %}
+  {% include 'blocks/slider.njk' %}
+
+  {% set mix = 'page-main__footer' %}
+  {% include 'blocks/contacts.njk' %}
+>>>>>>> 62a94044788d3004c76845798f22bd3a6b892134
 {% endblock%}

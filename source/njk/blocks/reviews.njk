@@ -1,0 +1,16 @@
+<section class="reviews {{ mix }}">
+  <h2 class="visually-hidden">{{ reviews.heading }}.</h2>
+  <div class="reviews__wrapper">
+
+    <ul class="reviews__list">
+      {% for review in data.reviews.list %}
+        <li class="reviews__item">
+          <blockquote class="reviews__content">
+            <cite class="reviews__author">{{ review.author }}</cite>
+            <p class="reviews__comment">{{ review.comment }}</p>
+          </blockquote>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
