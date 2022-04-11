@@ -23,12 +23,18 @@
   } %}
   {% include 'blocks/slider.njk' %}
 
-  {% set mix = 'page-main__contacts' %}
+  {% set slider = {
+    mix: 'page-main__tariffs',
+    heading: data.tariffs.heading,
+    slot: sliderSlot('tariffs'),
+    togglers: {
+      title: 'Тариф',
+      length: data.tariffs.list | length
+    },
+    mobileOnly: true
+  } %}
+  {% include 'blocks/slider.njk' %}
+
+  {% set mix = 'page-main__footer' %}
   {% include 'blocks/contacts.njk' %}
-
-  {% set mix = 'page-main__tariffs' %}
-  {% include 'blocks/tariffs.njk' %}
-
-  {% set mix = 'promo__markets' %}
-  {% include 'blocks/markets.njk' %}
 {% endblock%}

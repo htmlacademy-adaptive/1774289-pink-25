@@ -7,10 +7,10 @@
 
   <ul class="features__list">
     {% for item in data.features.list %}
-    <li class="features__item">
-      <h3 class="features__title">{{ features.title }}</h3>
-      <p class="features__description">{{ features.description }}</p>
-    </li>
+      <li class="features__item">
+        <h3 class="features__title">{{ item.title }}</h3>
+        <p class="features__description">{{ item.description }}</p>
+      </li>
     {% endfor %}
   </ul>
 </section>

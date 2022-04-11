@@ -1,5 +1,5 @@
 <article class="photo">
-  <h3 class="visually-hidden">{{ photo.image.alt }}</h3>
+  <h3 class="visually-hidden">{{ photo.image.alt }}.</h3>
 
   <figure>
     {% set picture = {
@@ -12,7 +12,7 @@
       <blockquote class="photo__quote">
         <p class="photo__cite">
           <cite class="photo__author">{{ photo.author }}</cite>
-          <time class="photo__time" datatime="{{ photo.created }}">
+          <time class="photo__time" datetime="{{ photo.created }}">
             {{ photo.time }}
           </time>
         </p>
