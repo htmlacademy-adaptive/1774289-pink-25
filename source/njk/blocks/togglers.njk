@@ -1,18 +1,9 @@
-<<<<<<< HEAD
-<ul class="togglers {{ mix }}">
-  {% for toggler in togglers.list %}
-    <li class="togglers__item">
-      <button class="togglers__controls" type="button" data-toggle="{{ togglers.id}}-{{ loop.index }}">
-        <span class="visually-hidden">
-          {{ togglers.title }}{{ loop.index }}
-=======
 <ul class="togglers {{ togglers.mix }}">
-  {% for toggler in range (1, togglers.length + 1) %}
+  {% for toggler in range(1, togglers.length + 1) %}
     <li class="togglers__item">
-      <button class="togglers__control" type="button" data-toggle="{{ togglers.id }}-{{ loop.index }}">
+      <button class="togglers__control" type="button">
         <span class="visually-hidden">
           {{ togglers.title }} {{ loop.index }}
->>>>>>> 62a94044788d3004c76845798f22bd3a6b892134
         </span>
       </button>
     </li>

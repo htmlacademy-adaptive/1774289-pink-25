@@ -1,14 +1,8 @@
 {% macro attrs(field, i) %}
   class="fields__input"
-<<<<<<< HEAD
-  id="{{ fields.name }}--{{ i }}"
-  name="{{ fields.name }}[]"
-  placeholder="{{ field.placeholder }}{{ ' * ' if field.required }}"
-=======
   id="{{ fields.name }}-{{ i }}"
   name="{{ fields.name }}{{ '[]' if fields.list.length > 1 }}"
   placeholder="{{ field.placeholder }}{{ ' *' if field.required }}"
->>>>>>> 62a94044788d3004c76845798f22bd3a6b892134
   {{ 'required' if field.required }}
 {% endmacro %}
 
@@ -17,26 +11,18 @@
 
   {% for field in fields.list %}
   <p class="fields__group">
-<<<<<<< HEAD
-    <label class="fields__label" for="{{ fields.name }}--{{ loop.index }}">
-=======
     <label class="fields__label" for="{{ fields.name }}-{{ loop.index }}">
->>>>>>> 62a94044788d3004c76845798f22bd3a6b892134
       {{ field.title }}
     </label>
 
     {% if field.type == 'textarea'%}
       <textarea {{ attrs(field, loop.index) }}></textarea>
     {% else %}
-<<<<<<< HEAD
-      <input {{ attrs(field, loop.index) }} {{ 'type=' + field.type if field.type }}>
-=======
       <input
         {{ attrs(field, loop.index) }}
         type="{{ field.type or 'text' }}"
         {{ 'pattern="' + field.pattern + '"' if field.pattern }}
       />
->>>>>>> 62a94044788d3004c76845798f22bd3a6b892134
     {% endif %}
   </p>
   {% endfor %}

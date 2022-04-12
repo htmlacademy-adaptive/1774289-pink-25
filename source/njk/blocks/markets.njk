@@ -1,11 +1,7 @@
 <ul class="markets {{ mix }}">
   {% for market in data.markets %}
     <li class="markets__item">
-<<<<<<< HEAD
-      <a class="markets__link markets__link--{{ mix }}" href="{{ market.href }}">
-=======
-      <a class="markets__link" href="{{ market.href }}">
->>>>>>> 62a94044788d3004c76845798f22bd3a6b892134
+      <a class="markets__link markets__link--{{ market.icon}}" href="{{ market.href }}">
         <span class="visually-hidden">{{ market.title }}</span>
       </a>
     </li>

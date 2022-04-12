@@ -8,52 +8,6 @@
   </td>
 {% endmacro %}
 
-<<<<<<< HEAD
-<section class="tariffs {{ mix }}">
-  <h2 class="visually-hidden">Тарифы.</h2>
-
-  <table class="tariffs__table">
-    <thead class="tariffs__header">
-      <tr class="tariffs__names">
-        <th class="visually-hidden">Параметры.</th>
-
-        {% for tariff in data.tariffs %}
-          <th class="tariffs__name">
-            {{ tariff.title }}
-            <p class="tariffs__price">{{ tariff.price }} USD</p>
-          </th>
-        {% endfor %}
-      </tr>
-    </thead>
-
-    <tbody class="tariffs__props">
-      <tr class="tariffs__details">
-        <th class="tariffs__detail">Розовый фильтр</th>
-
-        {% for tariff in data.tariffs %}
-          {{ value(tariff.filter) }}
-        {% endfor %}
-      </tr>
-
-      <tr class="tariffs__details">
-        <th class="tariffs__detail">Смайлики</th>
-
-        {% for tariff in data.tariffs %}
-          {{ value(tariff.smiles) }}
-        {% endfor %}
-      </tr>
-
-      <tr class="tariffs__details">
-        <th class="tariffs__detail">Комментарии</th>
-
-        {% for tariff in data.tariffs %}
-          {{ value(tariff.comments) }}
-        {% endfor %}
-      </tr>
-    </tbody>
-  </table>
-</section>
-=======
 <table class="tariffs {{ mix }}">
   <thead class="tariffs__header">
     <tr class="tariffs__names">
@@ -94,4 +48,3 @@
     </tr>
   </tbody>
 </table>
->>>>>>> 62a94044788d3004c76845798f22bd3a6b892134
