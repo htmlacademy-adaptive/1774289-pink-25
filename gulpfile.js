@@ -1,45 +1,45 @@
-import bemValidator from 'gulp-html-bem-validator';
-import browsersync from 'browser-sync';
-import del from 'del';
 import gulp from 'gulp';
-import lintspaces from 'gulp-lintspaces';
-import posthtml from 'gulp-posthtml';
-import rename from 'gulp-rename';
+import plumber from 'gulp-plumber';
+import less from 'gulp-less';
+import postcss from 'gulp-postcss';
+import autoprefixer from 'autoprefixer';
+import browser from 'browser-sync';
 
-const { src, dest, watch, series } = gulp;
-const server = browsersync.create();
-const checkLintspaces = () => lintspaces({
-  editorconfig: '.editorconfig'
-});
+// Styles
 
-const buildHTML = () => src('source/njk/pages/**/*.njk')
-  .pipe(posthtml())
-  .pipe(bemValidator())
-  .pipe(rename({ extname: '.html' }))
-  .pipe(dest('source'));
+export const styles = () => {
+  return gulp.src('source/less/style.less', { sourcemaps: true })
+    .pipe(plumber())
+    .pipe(less())
+    .pipe(postcss([
+      autoprefixer()
+    ]))
+    .pipe(gulp.dest('source/css', { sourcemaps: '.' }))
+    .pipe(browser.stream());
+}
 
-const testHTML = () => src('source/njk/**/*.njk')
-  .pipe(checkLintspaces())
-  .pipe(lintspaces.reporter());
+// Server
 
-const reload = (done) => {
-  server.reload();
-  done();
-};
-
-const startServer = () => {
-  server.init({
+const server = (done) => {
+  browser.init({
+    server: {
+      baseDir: 'source'
+    },
     cors: true,
-    open: true,
-    server: 'source',
-    ui: false
+    notify: false,
+    ui: false,
   });
+  done();
+}
 
-  watch('source/njk/**/*.njk', series(testHTML, buildHTML, reload));
-};
+// Watcher
 
-const cleanDest = () => del([
-  `source/**/*.html`
-]);
+const watcher = () => {
+  gulp.watch('source/less/**/*.less', gulp.series(styles));
+  gulp.watch('source/*.html').on('change', browser.reload);
+}
 
-export default series(cleanDest, testHTML, buildHTML, startServer);
+
+export default gulp.series(
+  styles, server, watcher
+);
