@@ -5,12 +5,12 @@
     <b class="features__lead">{{ lead }}</b>
   {% endfor %}
 
-  <ul class="features__list">
+  <dl class="features__list">
     {% for item in data.features.list %}
-      <li class="features__item">
-        <h3 class="features__title">{{ item.title }}</h3>
-        <p class="features__description">{{ item.description }}</p>
-      </li>
+      <div class="features__item features__item--{{ loop.index }}">
+        <dt class="features__title">{{ item.title }}</dt>
+        <dd class="features__description">{{ item.description }}</dd>
+      </div>
     {% endfor %}
   </ul>
 </section>
