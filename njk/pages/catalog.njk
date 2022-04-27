@@ -1,0 +1,10 @@
+{% extends 'layout.njk' %}
+
+{% set slot = 'catalog' %}
+
+{% block main %}
+  {{ super() }}
+
+  {% set mix = 'page-main__add' %}
+  {% include 'blocks/add.njk' %}
+{% endblock %}

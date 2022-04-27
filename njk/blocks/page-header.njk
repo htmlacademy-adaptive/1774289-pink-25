@@ -1,0 +1,14 @@
+<header class="page-header {{ mix }}">
+  <p class="page-header__top">
+    {% set mix = 'page-header__logo' %}
+    {% include 'blocks/logo.njk' %}
+
+    <a class="page-header__toggler" href="#!">
+      <span class="visually-hidden">{{ config.menu.labelToOpen }}.</span>
+      <span class="visually-hidden" hidden>{{ config.menu.labelToClose }}.</span>
+    </a>
+  </p>
+
+  {% set mix = 'page-header__nav'%}
+  {% include 'blocks/nav.njk'%}
+</header>
