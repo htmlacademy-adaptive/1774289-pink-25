@@ -3,22 +3,68 @@
   list-style: none;
 }
 
-.reviews__content {
+.reviews__body {
   margin: 0;
   padding: 42px 20px 24px;
   line-height: 30px;
   text-align: center;
+
+  @media @tablet-desktop {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding: 39px 0 0;
+  }
+
+  @media @desktop {
+    padding: 184px 100px 27px;
+    background-image: url("../img/icons/quotes.svg");
+    background-repeat: no-repeat;
+    background-position: 50% 70px;
+  }
 }
 
 .reviews__author {
   display: block;
-  margin-bottom: 12px;
+  margin: 0 0 12px;
+  font-style: normal;
+
+  @media @tablet-desktop {
+    margin: 35px 0 0;
+  }
+
+  @media @desktop {
+    margin-top: 36px;
+  }
+}
+
+.reviews__author-name {
+  display: block;
   font-weight: 700;
   font-size: 18px;
   color: var(--color-black);
-  font-style: normal;
+
+  @media @tablet-desktop {
+    font-size: 20px;
+  }
+
+  @media @desktop {
+    margin-bottom: 2px;
+    font-size: 24px;
+  }
+}
+
+.reviews__author-note {
+  @media @mobile {
+    .visually-hidden();
+  }
 }
 
 .reviews__comment {
   margin: 0;
+
+  @media @tablet-desktop {
+    order: -1;
+    font-size: 18px;
+  }
 }

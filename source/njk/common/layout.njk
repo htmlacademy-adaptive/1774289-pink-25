@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <title>HTML Academy: Пинк &gt; {{ data.title }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css{{ ver if ver}}">
   </head>
   <body>
     <div class="page viewport viewport--page">
@@ -28,7 +28,7 @@
     {% block modal %}
       {% for modal in data.modals %}
         <div class="viewport" id="{{ modal.id }}">
-          <a class="viewport__back" href="#">
+          <a class="viewport__back" href="#!">
             <span class="visually-hidden">{{ config.viewportCloseText }}.</span>
           </a>
 
@@ -39,8 +39,17 @@
     {% endblock %}
 
     <script>
+      {% if page === 'success' %}
+        {% set selector = '#success' %}
+      {% elif page === 'error' %}
+        {% set selector = '#error' %}
+      {% else %}
+        {% set selector = '.viewport--page' %}
+      {% endif %}
+
       window.pinegladePP = {
-        breakpoints: [320, 660, 1200]
+        breakpoints: [320, 660, 1200],
+        selector: '{{ selector }}'
       };
     </script>
     <script src="https://efiand.github.io/pineglade-pp/pineglade-pp.min.js"></script>
