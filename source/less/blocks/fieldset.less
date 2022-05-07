@@ -1,5 +1,5 @@
 .fieldset {
-  padding: 31px 20px 42px;
+  padding: 31px 20px 43px;
   border: none;
 
   &--checkers {
@@ -40,8 +40,10 @@
     margin-bottom: 15px;
   }
 
-  &--tablet {
-    .visually-hidden();
+  &--mobile-hidden {
+    @media @mobile {
+      .visually-hidden();
+    }
   }
 }
 
