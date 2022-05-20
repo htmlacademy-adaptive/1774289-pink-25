@@ -1,0 +1,17 @@
+.visually-hidden {
+  @media @mobile {
+    .visually-hidden();
+  }
+
+  &:not(&--mobile) {
+    @media @tablet {
+      .visually-hidden();
+    }
+  }
+
+  &:not(&--mobile):not(&--mobile-tablet) {
+    @media @desktop {
+      .visually-hidden();
+    }
+  }
+}

@@ -14,9 +14,13 @@ import posthtml from 'gulp-posthtml';
 import rename from 'gulp-rename';
 import stylelint from 'stylelint';
 
+const IS_DEV = process.env.NODE_ENV === 'development';
 const { src, dest, watch, series, parallel } = gulp;
 const checkLintspaces = () => lintspaces({
   editorconfig: '.editorconfig'
+});
+const reportLintspaces = () => lintspaces.reporter({
+  breakOnWarning: !IS_DEV
 });
 const editorconfigSources = [
   'source/njk/**/*.njk',
@@ -28,17 +32,19 @@ const jsSources = [
   '*.js'
 ];
 
-export const buildHTML = () => src('source/njk/pages/**/*.njk')
+export const testHTML = () => src('source/njk/pages/**/*.njk')
   .pipe(posthtml())
   .pipe(bemValidator())
-  .pipe(rename({ extname: '.html' }))
-  .pipe(gulpIf(process.env.NODE_ENV !== 'test', dest('source')));
+  .pipe(rename({ extname: '.html' }));
+
+export const buildHTML = () => testHTML()
+  .pipe(dest('source'));
 
 export const testEditorconfig = () => src(editorconfigSources)
   .pipe(checkLintspaces())
-  .pipe(lintspaces.reporter());
+  .pipe(reportLintspaces());
 
-export const styles = () => src('source/less/*.less', { sourcemaps: true })
+export const styles = () => src('source/less/*.less', { sourcemaps: IS_DEV })
   .pipe(less())
   .pipe(postcss([
     autoprefixer()
@@ -47,25 +53,26 @@ export const styles = () => src('source/less/*.less', { sourcemaps: true })
 
 export const testStyles = () => src('source/less/**/*.less')
   .pipe(checkLintspaces())
-  .pipe(lintspaces.reporter())
+  .pipe(reportLintspaces())
   .pipe(postcss([
     stylelint(),
     postcssBemLinter(),
     postcssReporter({
       clearAllMessages: true,
-      throwError: false
+      throwError: !IS_DEV
     })
   ], {
     syntax: lessSyntax
   }));
 
 export const testScripts = () => src(jsSources)
+  .pipe(checkLintspaces())
+  .pipe(reportLintspaces())
   .pipe(eslint({
     fix: false
   }))
   .pipe(eslint.format())
-  .pipe(checkLintspaces())
-  .pipe(lintspaces.reporter());
+  .pipe(gulpIf(!IS_DEV, eslint.failAfterError()));
 
 const server = (done) => {
   browser.init({
@@ -90,7 +97,6 @@ const watcher = () => {
   watch(jsSources, series(testScripts, reload));
 };
 
+export const test = parallel(testHTML, testEditorconfig, testStyles, testScripts);
 export const build = parallel(buildHTML, styles);
-export const test = parallel(buildHTML, testEditorconfig, testStyles, testScripts);
-
 export default series(test, build, server, watcher);
