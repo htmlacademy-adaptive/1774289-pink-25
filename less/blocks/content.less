@@ -17,25 +17,48 @@
 
 .content__lead {
   display: block;
-  padding: 43px 20px 51px;
+  padding: 43px 20px 50px;
   font-weight: 400;
   line-height: 30px;
   text-align: center;
   color: var(--color-darkblue);
 
+  @media @tablet-desktop {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 91px 50px 77px;
+    font-size: 18px;
+  }
+
+  @media @desktop {
+    padding-bottom: 89px;
+  }
+
   &:last-child {
-    padding-bottom: 44px; //PP
+    padding-top: 41px;
+    padding-bottom: 42px;
+
+    @media @tablet-desktop {
+      padding-top: 65px;
+      padding-bottom: 70px;
+    }
+
+    @media @desktop {
+      padding-top: 61px;
+      padding-bottom: 67px;
+    }
   }
 }
 
 .content__slot {
+  display: grid;
   margin: 0;
-
-  &--catalog {
-    margin: -1px 0 -3px; //PP
-  }
 
   &--form {
     margin-top: -15px;
+
+    @media @tablet-desktop {
+      margin-top: -5px;
+    }
   }
 }

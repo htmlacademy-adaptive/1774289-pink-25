@@ -1,21 +1,143 @@
+.form {
+  @media @tablet-desktop {
+    display: grid;
+    gap: 58px 70px;
+    padding: 0 20px;
+  }
+
+  @media @desktop {
+    grid-template-columns: 1fr 1fr;
+
+    .centerer();
+  }
+}
+
 .form__fieldset {
   margin: 0;
+
+  &--fio {
+    @media @tablet-desktop {
+      order: 1;
+      margin: 0;
+      padding: 0;
+      border: none;
+
+      .field__label {
+        margin: 17px 19px 0 0;
+      }
+    }
+  }
+
+  &--app {
+    @media @tablet-desktop {
+      order: 2;
+    }
+
+    @media @desktop {
+      margin-top: -12px;
+    }
+  }
+
+  &--contacts {
+    @media @tablet-desktop {
+      order: 3;
+
+      .fieldset__field {
+        &:last-child {
+          margin-top: 29px;
+        }
+      }
+
+      .field__label {
+        margin: 10px 0 0 19px;
+      }
+    }
+
+    @media @desktop {
+      display: grid;
+      grid-column: 1/-1;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+
+      .fieldset__field {
+        &:last-child {
+          margin-top: 0;
+        }
+      }
+
+      .fieldset__title {
+        margin-bottom: 3px;
+      }
+    }
+  }
+
+  &--achievements {
+    @media @tablet-desktop {
+      order: 4;
+
+      .fieldset__title {
+        margin-bottom: 6px;
+      }
+    }
+
+    @media @desktop {
+      grid-column: 1/3;
+    }
+  }
+
+  &--message {
+    @media @tablet-desktop {
+      order: 5;
+      grid-column: 1/-1;
+      padding-bottom: 43px;
+    }
+  }
 }
 
 .form__footer {
+  order: 6;
   padding: 0 20px 16px;
+
+  @media @tablet-desktop {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 20px;
+    margin-bottom: 35px;
+    padding: 8px 0 15px 0;
+  }
+
+  @media @desktop {
+    grid-column: 1/-1;
+    margin-bottom: -30px;
+    padding-bottom: 0;
+  }
 }
 
 .form__submit {
   width: 100%;
   margin-bottom: 34px;
+
+  @media @tablet {
+    margin-bottom: 0;
+  }
+
+  @media @desktop {
+    max-width: 65%;
+    margin-bottom: 0;
+  }
 }
 
 .form__description {
   margin: 0;
+  font-size: 14px;
   line-height: 30px;
   text-align: center;
   text-transform: uppercase;
+
+  @media @tablet-desktop {
+    text-align: right;
+  }
 }
 
 .form__sign {

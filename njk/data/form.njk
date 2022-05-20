@@ -4,8 +4,9 @@
 
 {% set content = {
   heading: 'Конкурс на самое безбашенное путешествие с Пинк',
-  prepend: 'Поделитесь своей историей и получите шанс выиграть ценный приз — 1000 миль на вашу бонусную карту!',
-  requiredFields: 'обязательные поля',
+  prepend: 'Поделитесь своей историей и получите шанс выиграть ценный приз — 1000 миль на вашу бонусную карту! <span
+  class="visually-hidden visually-hidden--mobile">Пожалуйста, заполните форму ниже:</span>',
+  requiredFields: 'обязательные <span class="visually-hidden visually-hidden--mobile-tablet">для заполнения</span> поля',
   submitText: 'Отправить форму'
 } %}
 
@@ -73,7 +74,7 @@
   },
   {
     name: 'contacts',
-    title: 'Контакты',
+    title: 'Контактная информация',
     hiddenTitleInMobile: true,
     fields: [
       {
@@ -111,14 +112,15 @@
     ]
   },
   {
+    name: 'message',
     title: 'Опишите свои эмоции',
     fields: [
       {
         title: 'Сообщение',
         hiddenTitle: true,
         placeholder: 'Можно прям в красках, не стесняясь в выражениях',
-        type: 'textarea',
-        name: 'message'
+        name: 'message',
+        textarea: true
       }
     ]
   }
