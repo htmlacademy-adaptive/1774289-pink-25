@@ -1,24 +1,13 @@
-.page-header__back() {
-  background-image: url("../img/back-header-mobile.jpg");
-  background-repeat: no-repeat;
-  background-position: 50% 0;
-  background-size: cover;
-
-  @media @no-xs {
-    background-image: url("../img/back-header-tablet.jpg");
-  }
-
-  @media @no-sm {
-    background-image: url("../img/back-header-desktop.jpg");
-  }
-}
-
 .page-header {
   color: var(--color-white);
   background-color: var(--color-darkblue);
 
   @media @desktop {
-    .page-header__back();
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+    background-size: cover;
+
+    .retina-bg("back-header-desktop");
   }
 }
 
@@ -47,7 +36,7 @@
 
   @media @tablet-desktop {
     padding-top: 27px;
-    padding-bottom: 38px;
+    padding-bottom: 40px;
   }
 
   @media @desktop {
@@ -59,9 +48,19 @@
 }
 
 .page-header__logo {
+  --color-glasses: currentColor;
+  --color-glasses-stars: var(--color-pink);
   position: relative;
   z-index: 1;
   display: block;
+
+  @media @mobile {
+    --visibility-glasses: none;
+    --translate-text-x: -72px;
+    --translate-text-y: -17px;
+    --logo-width: 75px;
+    --logo-height: 23px;
+  }
 }
 
 .page-header__toggler {
@@ -89,9 +88,10 @@
     height: 100%;
     margin: auto;
     background-color: currentColor;
-    mask-image: url("../img/icons/menu-open.svg");
+    mask-image: url("../img/sprite.svg#icon-menu-open");
     mask-repeat: no-repeat;
     mask-position: 50%;
+    mask-size: 100%;
   }
 }
 
@@ -117,7 +117,21 @@
   position: relative;
 
   @media @mobile-tablet {
-    .page-header__back();
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+    background-size: cover;
+
+    @media @xs {
+      .retina-bg("back-header");
+    }
+
+    @media @no-xs {
+      .retina-bg("back-header-tablet");
+    }
+
+    @media @no-sm {
+      .retina-bg("back-header-desktop");
+    }
   }
 
   @media @tablet-desktop {
@@ -128,11 +142,20 @@
 }
 
 .page-header__collage {
+  @media @xs {
+    .retina-bg("back-header");
+  }
+
   @media @mobile {
     margin-top: -66px;
-    padding: 85px 0 0;
+    padding: 87px 0 0;
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+    background-size: cover;
 
-    .page-header__back();
+    @media @no-xs {
+      .retina-bg("back-header-tablet");
+    }
   }
 
   @media @tablet {
@@ -141,13 +164,12 @@
 
   @media @tablet-desktop {
     width: 300px;
-    padding: 204px 20px 3px;
-    line-height: 48px;
+    padding: 203px 20px 3px;
   }
 
   @media @desktop {
     padding-top: 99px;
-    padding-bottom: 9px;
+    padding-bottom: 8px;
   }
 }
 
@@ -155,7 +177,7 @@
   position: relative;
   z-index: 1;
   display: block;
-  padding: 0 20px 23px;
+  padding: 0 20px 22px;
   font-weight: 300;
   font-size: 24px;
   text-align: center;
@@ -163,6 +185,7 @@
   @media @tablet-desktop {
     padding: 0;
     font-size: 40px;
+    line-height: 48px;
   }
 
   @media @desktop {
@@ -179,9 +202,18 @@
     position: absolute;
     right: 0;
     bottom: 0;
+  }
+
+  // PP
+  // (хотя более правильным будет обрезать картинку на 106px справа,
+  // но я решил показать вариант, когда нет такой возможности)
+  @media @desktop {
+    max-width: 100%;
+    overflow: hidden;
 
     img {
-      width: 550px; // TEMP
+      max-width: none;
+      transform: translateX(106px);
     }
   }
 }
@@ -204,18 +236,27 @@
   line-height: 33px;
   text-align: center;
 
+  @media @xs {
+    .retina-bg("back-header");
+  }
+
   @media @mobile {
     min-height: 99px;
-    margin-top: -67px;
+    margin-top: -66px;
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+    background-size: cover;
 
-    .page-header__back();
+    @media @no-xs {
+      .retina-bg("back-header-tablet");
+    }
   }
 
   @media @tablet {
     min-height: 204px;
     margin-top: -110px;
-    padding-top: 176px;
-    padding-bottom: 40px;
+    padding-top: 177px;
+    padding-bottom: 39px;
   }
 
   @media @tablet-desktop {
@@ -266,18 +307,16 @@
 
     &::before {
       height: 23px;
-      mask-image: url("../img/icons/menu-close.svg");
+      mask-image: url("../img/sprite.svg#icon-menu-close");
       mask-size: 23px;
     }
   }
 
   .page-header__nav {
-    top: 100%;
-    visibility: visible;
-    transition-timing-function: ease-in;
-
-    @media @tablet {
-      top: 96%;
+    @media @mobile-tablet {
+      top: 100%;
+      visibility: visible;
+      transition-timing-function: ease-in;
     }
   }
 }

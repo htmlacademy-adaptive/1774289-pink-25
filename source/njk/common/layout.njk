@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="ru">
   <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <title>HTML Academy: Пинк &gt; {{ data.title }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css{{ ver if ver}}">
@@ -28,7 +28,7 @@
     {% block modal %}
       {% for modal in data.modals %}
         <div class="viewport" id="{{ modal.id }}">
-          <a class="viewport__back" href="#!">
+          <a class="viewport__back" href="#">
             <span class="visually-hidden">{{ config.viewportCloseText }}.</span>
           </a>
 
@@ -38,30 +38,10 @@
       {% endfor %}
     {% endblock %}
 
-    <script>
-      {% if page === 'success' %}
-        {% set selector = '#success' %}
-      {% elif page === 'error' %}
-        {% set selector = '#error' %}
-      {% else %}
-        {% set selector = '.viewport--page' %}
-      {% endif %}
-
-      document.addEventListener('keydown', (evt) => {
-        if (evt.key === 'e') {
-          document.body.contentEditable = document.body.contentEditable === 'true' ? false : true;
-          document.querySelectorAll('p, b, a, button').forEach((element) => {
-            element.spellcheck = !element.spellcheck;
-          });
-        }
-      });
-
-      window.pinegladePP = {
-        breakpoints: [320, 660, 1200],
-        selector: '{{ selector }}'
-      };
-    </script>
-    <script src="https://efiand.github.io/pineglade-pp/pineglade-pp.min.js"></script>
+    {% if IS_DEV %}
+      <script src="js/dev.js" type="module"></script>
+      <script src="https://efiand.github.io/pineglade-pp/pineglade-pp.min.js" defer></script>
+    {% endif %}
     <script src="js/script.js" type="module"></script>
   </body>
 </html>

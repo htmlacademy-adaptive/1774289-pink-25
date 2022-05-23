@@ -71,11 +71,12 @@
     .fieldset__title {
       margin-bottom: 42px;
 
-      @media @tablet-desktop {
-        margin-bottom: 13px;
+      @media @tablet {
+        margin-bottom: 20px;
       }
 
       @media @desktop {
+        margin-bottom: 13px;
         padding: 0 24px;
       }
     }
@@ -94,7 +95,7 @@
     }
 
     .fieldset__title {
-      .visually-hidden();
+      .sr-only();
     }
 
     .fieldset__field + .fieldset__field {

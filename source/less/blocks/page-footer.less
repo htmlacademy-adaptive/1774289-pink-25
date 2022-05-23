@@ -6,11 +6,11 @@
 
   @media @tablet-desktop {
     grid-template-columns: repeat(3, 1fr);
-    padding: 17px 20px;
+    padding: 35px 20px;
   }
 
   @media @desktop {
-    padding: 100px 20px;
+    padding: 98px 20px 35px 20px;
 
     .centerer();
   }
@@ -18,21 +18,25 @@
 
 .page-footer__logo {
   min-height: 40px;
-  outline: 2px solid var(--color-pink);
+
+  &:hover:not(:active) {
+    --color-glasses-stars: currentColor;
+  }
+
+  @media @mobile {
+    --visibility-glasses: block;
+    --translate-text-x: -1px;
+    justify-self: center;
+  }
 
   @media @tablet-desktop {
     align-self: start;
     justify-self: start;
-    margin: auto 0;
   }
 }
 
 .page-footer__socials {
-  margin: 0; // PP
-
-  @media @tablet-desktop {
-    margin: 18px 0 18px -2px;
-  }
+  margin: 0;
 
   @media @desktop {
     margin: 0;
@@ -43,7 +47,7 @@
   margin: auto;
 
   @media @tablet-desktop {
-    justify-content: end;
+    justify-self: end;
     margin-right: 0;
   }
 }

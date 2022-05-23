@@ -16,14 +16,17 @@
     grid-template-columns: 300px 1fr;
     grid-template-rows: 1fr min-content min-content;
     gap: 24px 45px;
-    padding: 42px 20px 54px 20px;
+    padding-top: 42px;
+    padding-bottom: 54px;
   }
 
   @media @desktop {
     grid-template-areas: "file filters filters" "file filters filters" "file submit reset";
-    grid-template-columns: 300px 1fr 1fr;
+    grid-template-columns: 344px 1fr 1fr;
     grid-template-rows: 1fr min-content;
-    padding: 42px 14px 56px 80px;
+    padding-right: 60px;
+    padding-bottom: 57px;
+    padding-left: 80px;
   }
 }
 
@@ -46,7 +49,7 @@
 }
 
 .add__file-chooser {
-  --image: url("../img/photo-add-mobile.jpg");
+  --image: url("../img/photo-add.jpg");
   --size: 100%;
   --pink: 0;
   --grayscale: 0;
@@ -61,7 +64,7 @@
   filter: grayscale(var(--grayscale));
 
   @media @tablet-desktop {
-    --image: url("../img/photo-add.jpg");
+    --image: url("../img/photo-add-tablet.jpg");
   }
 
   &::after {
@@ -79,22 +82,17 @@
 .add__filters {
   position: relative;
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   grid-area: filters;
-  margin: -34px 0 38px -48px;
-  padding: 44px 0 72px;
+  margin: -35px 0 38px -47px;
+  padding: 42px 20px 73px;
   border: none;
 
   @media @tablet-desktop {
     display: block;
-    margin: -1px 0 0 0;
+    margin: 0;
     padding: 0;
-  }
-
-  @media @desktop {
-    margin: 0 50px;
   }
 
   &::after {
@@ -112,47 +110,24 @@
 }
 
 .add__filter {
-  margin: 32px 0 0 35px;
+  margin: 34px 0 0 35px;
 
   @media @tablet-desktop {
     display: flex;
     align-items: center;
     min-height: 71px;
     margin: 0;
-    padding: 0 18px 1px 3px;
+    padding-right: 18px;
     border-bottom: 1px solid var(--color-darkblue-10);
   }
 
   @media @desktop {
-    padding: 0 24px 0 3px; // PP
+    padding-right: 30px;
   }
 
   &:last-child {
-    @media @tablet-desktop {
-      margin-top: -3px; // PP
-      margin-left: 4px; // PP
-    }
-
     @media @desktop {
-      margin-left: 7px; // PP
-    }
-  }
-
-  &::after {
-    content: "";
-    position: absolute;
-    top: 79%;
-    right: 0;
-    left: 48px;
-    height: 1px;
-    background-color: var(--color-darkblue-10);
-
-    @media @mobile {
-      display: none;
-    }
-
-    @media @tablet-desktop {
-      display: none;
+      border-bottom: none;
     }
   }
 }
@@ -164,17 +139,18 @@
   background-color: transparent;
   border: none;
   cursor: pointer;
+  transition: color 0.3s ease-in-out;
 
   @media @tablet-desktop {
     display: flex;
-    margin-right: 29px;
+    margin-right: 25px;
     color: var(--color-pink);
     pointer-events: none;
   }
 
-  @media @desktop {
-    margin-right: 47px;
-    margin-left: -9px;
+  @media @tablet {
+    width: 30px;
+    height: 22px;
   }
 
   &:hover {
@@ -188,7 +164,10 @@
   &::before {
     content: "";
     display: block;
+    margin: auto;
     background-color: currentColor;
+    mask-size: 100%;
+    mask-position: 0;
 
     @media @tablet-desktop {
       mask-size: cover;
@@ -198,8 +177,7 @@
   &--crop::before {
     width: 44px;
     height: 44px;
-    margin-left: 1px; // PP
-    mask-image: url("../img/icons/crop.svg");
+    mask-image: url("../img/sprite.svg#icon-crop");
 
     @media @tablet {
       width: 22px;
@@ -210,33 +188,27 @@
   &--pink::before {
     width: 48px;
     height: 43px;
-    mask-image: url("../img/icons/fill.svg");
+    mask-image: url("../img/sprite.svg#icon-fill");
 
     @media @tablet {
       width: 24px;
       height: 22px;
-      margin-bottom: -1px; // PP
     }
   }
 
   &--grayscale::before {
     width: 32px;
     height: 32px;
-    mask-image: url("../img/icons/grayscale.svg");
+    mask-image: url("../img/sprite.svg#icon-grayscale");
 
     @media @tablet {
       width: 16px;
       height: 16px;
-      margin-right: 3px; // PP
     }
 
     @media @desktop {
-      margin-right: 7px; // PP
+      margin: 6px;
     }
-  }
-
-  @media @tablet-desktop {
-    position: relative;
   }
 }
 
@@ -252,6 +224,11 @@
     position: static;
     display: block;
     width: 100%;
+  }
+
+  @media @desktop {
+    width: 288px;
+    margin-left: auto;
   }
 }
 
@@ -280,18 +257,18 @@
   border: 3px solid var(--color-pink);
   border-radius: 30px;
   cursor: pointer;
-  transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  transition-timing-function: ease-in-out;
+  transition-duration: 0.3s;
+  transition-property: color, background-color, border-color;
 
   @media @tablet {
     grid-column: 2/3;
     width: 95%;
-    margin: 0;
+    margin: 0 0 0 2px;
   }
 
   @media @desktop {
-    width: 80%;
     margin-bottom: 0;
-    margin-left: 45px;
   }
 
   &:hover {

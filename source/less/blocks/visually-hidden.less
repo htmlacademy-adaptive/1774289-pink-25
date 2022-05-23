@@ -1,17 +1,17 @@
 .visually-hidden {
   @media @mobile {
-    .visually-hidden();
+    .sr-only();
   }
 
   &:not(&--mobile) {
     @media @tablet {
-      .visually-hidden();
+      .sr-only();
     }
   }
 
   &:not(&--mobile):not(&--mobile-tablet) {
     @media @desktop {
-      .visually-hidden();
+      .sr-only();
     }
   }
 }
