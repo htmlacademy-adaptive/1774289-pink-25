@@ -1,6 +1,6 @@
 .announce {
   @media @mobile {
-    .visually-hidden();
+    .sr-only();
   }
 
   @media @desktop {
@@ -10,7 +10,7 @@
 
 .announce__inner {
   min-height: 150px;
-  padding: 94px 34px 85px;
+  padding: 95px 34px 85px;
 
   @media @tablet-desktop {
     padding-left: 330px;
@@ -28,7 +28,8 @@
 
   &--effect {
     @media @tablet-desktop {
-      background-image: url("../img/icons/effect.svg");
+      background-image: url("../img/sprite.svg#icon-effect");
+      background-size: 238px;
     }
   }
 }
