@@ -8,11 +8,12 @@
   {% set picture = {
     mix: 'picture--fullwidth',
     image: photo.image,
+    alt: photo.imageText,
     ext: photo.ext,
     xs: photo.xs,
-    sm: photo.sm,
-    alt: photo.heading
+    sm: photo.sm
   } %}
+
   <a class="photo__picture" href="{{ photo.image }}-desktop@2x.{{ photo.ext }}">
     {% include 'blocks/picture.njk' %}
   </a>
